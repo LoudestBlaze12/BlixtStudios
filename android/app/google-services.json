@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "513851662762",
+    "project_id": "blixt-studios-c26d9",
+    "storage_bucket": "blixt-studios-c26d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513851662762:android:342fac30fd541ee9bacbd3",
+        "android_client_info": {
+          "package_name": "com.blixtstudios.blixtstudios"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513851662762-80u3j91j9imb9443crbap6j1vcsipq2u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.blixtstudios.blixtstudios",
+            "certificate_hash": "0ad7d33a1ce64a900ea5db1f76450e3703e31fb8"
+          }
+        },
+        {
+          "client_id": "513851662762-dgia7puocp3l7s40ogi4pm01bdoqeaji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaOpcHtypgIWifbpFS4lXkDGX4_aC0Gpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513851662762-dgia7puocp3l7s40ogi4pm01bdoqeaji.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "513851662762-7pso4vogqms5bnimugc80lk7t2fjsko7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.blixtstudios.blixtstudios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

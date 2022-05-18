@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:blixtstudios/screens/Welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:blixtstudios/homeScreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +34,7 @@ class _AppState extends State<App> {
 
         // Once complete, show your application
         if (snapshot.connectionState == ConnectionState.done) {
-          return MyApp();
+          return HomeScreen();
         }
 
         // Otherwise, show something whilst waiting for initialization to complete
@@ -46,6 +47,8 @@ class _AppState extends State<App> {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {

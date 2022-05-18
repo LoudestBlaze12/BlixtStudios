@@ -1,3 +1,4 @@
+import 'package:blixtstudios/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
@@ -247,6 +248,8 @@ class _WelcomeState extends State<Welcome> {
 
                       GFButton(onPressed: (){
                         //TODO: Create Auth Process Here
+                        print('user singed in');
+                        AuthService().anonLogin();
                         Navigator.pushNamed(context, "/home");
                       },
                         text: "Login",

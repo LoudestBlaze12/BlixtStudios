@@ -604,4 +604,27 @@ class ServicePage extends StatelessWidget {
   }
 }
 
+class ServiceApp extends StatelessWidget {
+  const ServiceApp({Key? key}) : super(key: key);
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Sizer(
+        builder: (context, orientation, deviceType) {
+          return  MaterialApp(
+            title: "Blixt Studios",
+            debugShowCheckedModeBanner: false,
+            initialRoute: "/intro",
+            routes: <String, WidgetBuilder>{
+              "/intro": (BuildContext context) => ServicePage(),
+            },
+          );
+          ;
+        }
+    );
+  }
+}
+
 

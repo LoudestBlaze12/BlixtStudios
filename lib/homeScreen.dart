@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           //User is already signed in, take them to the motherland
-          return ServicePage();
+          return ServiceApp();
         } else {
           //the results are in... you are not the father, time to sign up
           return  MyApp();

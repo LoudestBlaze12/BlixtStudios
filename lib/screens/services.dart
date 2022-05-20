@@ -1,3 +1,4 @@
+import 'package:blixtstudios/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,7 +7,7 @@ import 'package:glass/glass.dart';
 import 'package:sizer/sizer.dart';
 import 'package:blixtstudios/services/videoWidget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 
@@ -56,7 +57,7 @@ class ServicePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 0.5.h,),
-                Text('Samantha J.',
+                Text('${AuthService().user?.uid}',
                   style: GoogleFonts.inter(
                     fontWeight: FontWeight.w700,
                     fontSize: 22.sp,
@@ -587,6 +588,7 @@ class ServicePage extends StatelessWidget {
                             ),
                             onTap: (){
                               print('Hello darling my old friend');
+                              AuthService().signOut();
                               Navigator.pop(context);
                             },
                           )

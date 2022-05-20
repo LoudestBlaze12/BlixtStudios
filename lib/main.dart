@@ -1,3 +1,4 @@
+import 'package:blixtstudios/screens/services.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:blixtstudios/screens/Welcome.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
             initialRoute: "/intro",
             routes: <String, WidgetBuilder>{
               "/intro": (BuildContext context) => Welcome(),
+              "/home": (BuildContext context) => ServicePage()
             },
           );
           ;

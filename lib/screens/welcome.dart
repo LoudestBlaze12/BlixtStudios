@@ -31,20 +31,30 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
 
     bool _visible = true;
+    bool signUP = false;
     String myPassword = "";
     String myEmail = "";
 
-    signUpWithEmail () async {
+    signUpWithEmail (Function nextPage) async {
+
+
+
       try {
         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: myEmail,
             password: myPassword,
+
         );
+        nextPage;
+
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           print('No user found for that email.');
         } else if (e.code == 'wrong-password') {
           print('Wrong password provided for that user.');
+        }
+        else {
+          print('We are fucked');
         }
       }
     };
@@ -52,59 +62,9 @@ class _WelcomeState extends State<Welcome> {
 
     return Scaffold(
       body: SlidingUpPanel(
-//         body: Container(
-//           child: Center(
-//             child: AnimatedTextKit(
-//               animatedTexts: [
-//                 TypewriterAnimatedText(
-//                   'Build your project',
-//                   textStyle: const TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 32.0,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                   speed: const Duration(milliseconds: 100),
-//                 ),
-//                 TypewriterAnimatedText(
-//                   'Build your dreams',
-//                   textStyle: const TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 32.0,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                   speed: const Duration(milliseconds: 100),
-//                 ),
-//                 TypewriterAnimatedText(
-//                   'Build with Blixt',
-//                   textStyle: const TextStyle(
-//                     color: Colors.white,
-//                     fontSize: 32.0,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                   speed: const Duration(milliseconds: 200),
-//                 ),
-//
-//               ],
-//
-//               totalRepeatCount: 1,
-//
-//
-//             ),
-//           ),
-//           decoration: BoxDecoration(
-//               image: DecorationImage(
-//                 image: AssetImage("assets/imgs/introBack.png"),
-//                 fit: BoxFit.cover,
-//               )
-//           ),
-// // color: Colors.orange,
-//         ),
+
         body: Stack(
           children: [
-
-            // RiveAnimation.asset('assets/imgs/3d_raster_test.riv',
-            //   fit: BoxFit.cover,
-            // ),
 
 
             RiveAnimation.network(
@@ -123,13 +83,6 @@ class _WelcomeState extends State<Welcome> {
                       color: Colors.black,
                       fontSize: 32.0,
                       fontWeight: FontWeight.bold,
-                      // shadows: <Shadow> [
-                      //   Shadow(
-                      //     offset: Offset(3.0, 1.0),
-                      //     blurRadius: 5.0,
-                      //     color: Color.fromARGB(127, 0, 0, 0),
-                      //   ),
-                      // ],
                     ),
                     speed: const Duration(milliseconds: 75),
                   ),
@@ -267,15 +220,21 @@ class _WelcomeState extends State<Welcome> {
 
                     //Login Button
                     Column(children: [
-                      TextButton(onPressed: () {  },
+                      TextButton(onPressed: () {
+                        Navigator.pushNamed(context, "/sign");
+                        print("sign Up process trigged");
+                      },
                         child: Text("I don't have an account", style: TextStyle(color: Color.fromRGBO(255, 255, 255, .5)), textAlign: TextAlign.left,),),
 
                       GFButton(onPressed: (){
                         //TODO: Create Auth Process Here
                         print('user singed in');
                         // AuthService().anonLogin();
-                        signUpWithEmail();
-                        Navigator.pushNamed(context, "/home");
+                        signUpWithEmail(
+                                (){Navigator.pushNamed(context, "/home");
+                          }
+                        );
+
                       },
                         text: "Login",
                         textStyle: TextStyle(

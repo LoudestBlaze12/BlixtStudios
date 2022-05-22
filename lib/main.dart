@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:blixtstudios/screens/Welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:blixtstudios/homeScreen.dart';
+import 'package:blixtstudios/screens/signUp.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,7 +62,9 @@ class MyApp extends StatelessWidget {
             initialRoute: "/intro",
             routes: <String, WidgetBuilder>{
               "/intro": (BuildContext context) => Welcome(),
-              "/home": (BuildContext context) => ServicePage()
+              "/home": (BuildContext context) => ServicePage(),
+              "/sign": (BuildContext context) => SignUpPage(),
+
             },
           );
           ;

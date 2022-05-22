@@ -4,6 +4,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:rive/rive.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // class Welcome extends StatelessWidget{
 //   const Welcome({Key? key}) : super(key: key);
@@ -30,6 +31,23 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
 
     bool _visible = true;
+    String myPassword = "";
+    String myEmail = "";
+
+    signUpWithEmail () async {
+      try {
+        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+            email: myEmail,
+            password: myPassword,
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
+      }
+    };
 
 
     return Scaffold(
@@ -205,6 +223,9 @@ class _WelcomeState extends State<Welcome> {
                             color: Colors.white,
 
                           ),
+                            onChanged: (text) {
+                              myEmail = text;
+                            },
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color.fromARGB(255, 30, 26, 26),
@@ -227,6 +248,9 @@ class _WelcomeState extends State<Welcome> {
 
 
                             ),
+                            onChanged: (text){
+                              myPassword = text;
+                            },
                             decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Color.fromARGB(255, 30, 26, 26),
@@ -249,7 +273,8 @@ class _WelcomeState extends State<Welcome> {
                       GFButton(onPressed: (){
                         //TODO: Create Auth Process Here
                         print('user singed in');
-                        AuthService().anonLogin();
+                        // AuthService().anonLogin();
+                        signUpWithEmail();
                         Navigator.pushNamed(context, "/home");
                       },
                         text: "Login",
